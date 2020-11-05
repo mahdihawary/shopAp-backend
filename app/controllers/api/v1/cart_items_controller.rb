@@ -1,17 +1,20 @@
 class Api::V1::CartItemsController < ApplicationController
     def show
-        @cart_item= Cart_items.find(params[:id])
-        render json :@cart_item
+        cart_item= CartItems.find(params[:id])
+        json_string = CartItemSerializer.new(cart_item).serializable_hash
+        render json: json_string
     end
 
     def index
-        @cart_items = Cart_item.all
-        render json :@cart_items
+        cart_items = CartItem.all
+        json_string = CartItemSerializer.new(cart_items).serializable_hash
+        render json: json_string
     end
 
     def create
-        @cart_item= Cart_item.create(cart_params)
-        render json :@cart_item
+        cart_item= CartItem.create(cart_params)
+        json_string = CartItemSerializer.new(cart_item).serializable_hash
+        render json: json_string
     end
 
     private

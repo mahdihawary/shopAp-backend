@@ -1,12 +1,14 @@
 class Api::V1::ProductsController < ApplicationController
     def show
-        @product= Product.find(params[:id])
-        render json :@product
+        product= Product.find(params[:id])
+        json_string = ProductSerializer.new(product).serializable_hash
+        render json: json_string
     end
 
     def index
-         @products = Product.all
-        render json :@products
+         products = Product.all
+         json_string = ProductSerializer.new(products).serializable_hash
+         render json: json_string
     end
 
 
