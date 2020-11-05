@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:create]
-      post '/login', to: 'users#create'
-      get '/profile', to: 'users#profile'
+      resources :users
       resources :products
+      resources :cart_items
       resources :orders
     end
   end

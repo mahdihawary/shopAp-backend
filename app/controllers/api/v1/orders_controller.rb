@@ -1,17 +1,20 @@
 class Api::V1::OrdersController < ApplicationController
     def show
-        @order= Orders.find(params[:id])
-        render json :@order
+        order= Orders.find(params[:id])
+        json_string = OrderSerializer.new(order).serializable_hash
+        render json: json_string
     end
 
     def index
-        @orders = Order.all
-        render json :@orders
+        orders = Order.all
+        json_string = OrderSerializer.new(orders).serializable_hash
+        render json: json_string
     end
 
     def create
-        @order= Order.create(order_params)
-        render json :@order
+        order= Order.create(order_params)
+        json_string = OrderSerializer.new(order).serializable_hash
+        render json: json_string
     end
 
     private
