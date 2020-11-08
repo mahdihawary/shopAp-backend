@@ -12,6 +12,7 @@
 #     t.string "image
 CartItem.destroy_all
 Product.destroy_all
+User.destroy_all
 
 
 10.times do
