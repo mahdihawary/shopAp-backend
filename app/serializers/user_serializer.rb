@@ -1,6 +1,7 @@
 class UserSerializer
   include FastJsonapi::ObjectSerializer
   attributes :username, :user_img
+  
   attribute :products do |object|
     products_a=[]
     object.cart_items.all.each do |item|
