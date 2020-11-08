@@ -1,4 +1,5 @@
 class Api::V1::CartItemsController < ApplicationController
+    skip_before_action :authorized
     def show
         cart_item= CartItems.find(params[:id])
         json_string = CartItemSerializer.new(cart_item).serializable_hash

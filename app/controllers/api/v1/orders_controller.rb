@@ -1,4 +1,5 @@
 class Api::V1::OrdersController < ApplicationController
+    skip_before_action :authorized
     def show
         order= Orders.find(params[:id])
         json_string = OrderSerializer.new(order).serializable_hash
